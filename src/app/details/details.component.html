@@ -1,0 +1,82 @@
+<button type="button" class="btn btn-warning" routerLink="/"><< Voltar</button>
+<div class="card mb-3 card-details--pokemon">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img *ngIf="loading == false" src={{detailsPokemon?.imageUrlHiRes}} class="card-img" alt="...">
+        <div class="spinner-grow text-dark container loading" role="status" *ngIf="loading == true">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" *ngIf="loading == false">{{detailsPokemon?.name}} / {{detailsPokemon?.supertype}} - {{detailsPokemon?.subtype}} <sup>{{detailsPokemon?.id}}</sup></h5>
+          <div class="spinner-grow text-dark container loading" role="status" *ngIf="loading == true">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <table class="table table-bordered" *ngIf="detailsPokemon?.attacks !== undefined && loading == false">
+            <thead>
+             <tr>
+                 <th colspan="4">Ataques</th>
+             </tr>
+              <tr>
+                <th>Custo de "mana"</th>
+                <th>Nome</th>
+                <th>Dano</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let attack of detailsPokemon?.attacks; let i = index;">
+                <td>{{attack.convertedEnergyCost}}</td>
+                <td>{{attack.name}}</td>
+                <td>{{attack.damage}}</td>
+                <td class="table--text">{{attack.text || "Sem descrição"}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="spinner-grow text-dark container loading" role="status" *ngIf="loading == true">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <table class="table table-bordered" *ngIf="detailsPokemon?.resistances !== undefined && loading == false">
+            <thead>
+             <tr>
+                 <th colspan="2">Resistencia(s)</th>
+             </tr>
+              <tr>
+                <th>Tipo</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let res of detailsPokemon?.resistances; let i = index;">
+                <td>{{res.type}}</td>
+                <td>{{res.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <div class="spinner-grow text-dark container loading" role="status" *ngIf="loading == true">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <table class="table table-bordered" *ngIf="detailsPokemon?.weaknesses !== undefined && loading == false">
+            <thead>
+             <tr>
+                 <th colspan="2">Fraquesa(s)</th>
+             </tr>
+              <tr>
+                <th>Tipo</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let weak of detailsPokemon?.weaknesses; let i = index;">
+                <td>{{weak.type}}</td>
+                <td>{{weak.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>

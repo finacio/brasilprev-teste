@@ -1,0 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background: linear-gradient(to right, rgba(241,111,92,1) 0%, rgba(253,204,8,1) 0%, rgba(43,116,186,1) 80%, rgba(43,116,186,1) 100%);
+    font-family: 'Ubuntu', sans-serif;
+}

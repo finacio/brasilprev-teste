@@ -1,0 +1,63 @@
+
+<div *ngIf="loading == false">
+    <section class="filter-specific-pokemon">
+            <div class="input-group mb-3">
+            <input type="text" class="form-control" #pokemon placeholder="Encontrar um pokemon" aria-label="Username" >
+            <div class="input-group-append">
+                <button class="btn btn-warning" type="button" id="button-addon2" (click)="findSpecificPokemon(pokemon)"><i class="fas fa-search"></i></button>
+            </div>
+            </div>
+    </section>
+    <section class="list-of-pokemons">
+        <div class="list" *ngIf="allPokemons.length > 0">
+            <div class="card" *ngFor="let pokemon of allPokemons; let i = index" (click)="redirectoToSpecificPokemon(pokemon.id)">
+                <img src={{pokemon.imageUrl}} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <span class="card-icon--expand">
+                        <i class="fas fa-arrow-circle-up"></i>
+                    </span>
+                    <ul>
+                        <li class="card-text">
+                            <p>
+                                Nome: {{pokemon.name}}
+                            </p>
+                            <p>
+                                ID: {{pokemon.id}}
+                            </p>
+                        </li>
+                        <li class="card-text">
+                        </li>
+                        <li *ngFor="let type of pokemon.types; let i = index" class="card-text">
+                            <p>
+                            Tipo: {{type}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="pagination" *ngIf="allPokemons.lenght > 0"> -->
+        <div class="pagination">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" [ngClass]="{disabled: currentPage == 1}">
+                        <a class="page-link" aria-label="Previous" (click)="previous()">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pages; let i = index" [ngClass]="{active: currentPage == i+1}">
+                        <a class="page-link" (click)="pageNumber(i+1)">{{i+1}}</a>
+                    </li>
+                    <li class="page-item" [ngClass]="{disabled: currentPage == 10}">
+                        <a class="page-link" aria-label="Next" (click)="next()">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+                </nav>
+        </div>
+    </section>
+</div>
+<div class="spinner-grow text-dark container loading" role="status" *ngIf="loading == true">
+    <span class="sr-only">Loading...</span>
+</div>

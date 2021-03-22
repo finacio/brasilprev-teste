@@ -1,0 +1,40 @@
+.card-details--pokemon{
+    margin: 4% 0;
+    background: transparent;
+    border: transparent;
+}
+
+.card-details--pokemon .card-body{
+    width: 80%;
+    float: right;
+    background: #84996f;
+    border-radius: 1%;
+    color: #fff;
+}
+.table {
+    border-radius: 2%;
+    background-color: #cccccc2b;
+    color: #fff;
+}
+
+.table .table--text{
+    max-width: 150px;
+    /* text-align: left; */
+}
+
+.table th,
+.table td{
+    text-align: center;
+}
+
+.btn-warning{
+    color: #fff;
+    background-color: #e9c419;
+    border: transparent;
+}
+
+@media all and (max-width: 768px){
+    .card-details--pokemon .card-body{
+        width: 100%;
+    }
+}
